@@ -1,5 +1,5 @@
 import { CacheType, Events, Interaction } from "discord.js";
-import { logger } from "../../logger/logger";
+import { logger } from "../logger/logger";
 
 export const name = Events.InteractionCreate;
 
