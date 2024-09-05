@@ -1,8 +1,6 @@
 import { AIMessage, BaseMessage, HumanMessage } from "@langchain/core/messages";
 import { Message } from "discord.js";
-import { llm } from "../../llm";
-import { logger } from "../../logger/logger";
-import { TextEmbedding } from "../../models";
+import { logger } from "../logger/logger";
 
 export const mentionHandler = async (message: Message) => {
   logger.info(`mentionHandler: ${message.content}`);

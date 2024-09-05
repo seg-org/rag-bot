@@ -9,9 +9,5 @@ export const logger = createLogger({
       return `${timestamp} ${level}: ${message}`;
     })
   ),
-  transports: [
-    new transports.Console(), // Log to console
-    // Add file transport if needed
-    // new winston.transports.File({ filename: 'combined.log' })
-  ],
+  transports: [new transports.Console()],
 });
