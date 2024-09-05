@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  rag-bot:
+    build: .
+    container_name: rag-bot
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - DB_URL=postgresql://root:1234@db:5432/db
+      - MSG_EXPIRY_SEC=604800
+      - MAX_EMBED_DIST=1
+      - BOT_TOKEN=${BOT_TOKEN}
+      - BOT_CLIENT_ID=${BOT_CLIENT_ID}
+      - GUILD_ID=${GUILD_ID}
+      - OPENAI_TOKEN=${OPENAI_TOKEN}
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: db
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: "1234"
+      POSTGRES_DB: db
+
+volumes:
+  postgres:

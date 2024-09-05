@@ -1,10 +1,12 @@
-# rag-bot
+# RAG-bot
 
 Making a bot that can **leverage chat context** with **RAG** to generate consistent responses.
 
 ## Stack
 
 - discordjs
+- chatgpt
+- pgvector
 
 ## Getting Started
 
