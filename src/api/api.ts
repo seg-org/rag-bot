@@ -1,14 +1,18 @@
 import { AxiosResponse } from "axios";
 import { logger } from "../logger/logger";
 import { apiClient } from "./axios";
+import { CompleteChatDTO } from "./dto";
 
 export const completeChat = async (text: string) => {
   try {
-    const res: AxiosResponse<string> = await apiClient.get("/complete-chat", {
-      params: { text: text },
-    });
+    const res: AxiosResponse<CompleteChatDTO> = await apiClient.get(
+      "/complete-chat",
+      {
+        params: { text: text },
+      }
+    );
 
-    return res.data;
+    return res.data.reply;
   } catch (error) {
     logger.error("Failed to complete chat", error);
     return "Failed to complete chat";
