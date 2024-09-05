@@ -1,5 +1,7 @@
 # rag-bot
 
+## Repositories
+
 - [bot](https://github.com/seg-org/rag-bot)
 - [api](https://github.com/seg-org/rag-api)
 
