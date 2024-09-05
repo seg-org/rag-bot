@@ -6,7 +6,7 @@ import { config } from "./config/config";
 const { BOT_CLIENT_ID, BOT_TOKEN } = config;
 const commands = [];
 // Grab all the command folders from the commands directory you created earlier
-const foldersPath = path.join(__dirname, "bot/commands");
+const foldersPath = path.join(__dirname, "commands");
 const commandFolders = fs.readdirSync(foldersPath);
 
 for (const folder of commandFolders) {
