@@ -1,5 +1,8 @@
 # rag-bot
 
+- [bot](https://github.com/seg-org/rag-bot)
+- [api](https://github.com/seg-org/rag-api)
+
 Making a bot that can **leverage chat context** with **RAG** to generate consistent responses.
 
 ## Stack
@@ -22,20 +25,15 @@ Making a bot that can **leverage chat context** with **RAG** to generate consist
 
 ```bash
 NODE_ENV=development
-DB_URL=postgresql://root:1234@localhost:5432/db
-MSG_EXPIRY_SEC=604800 # 1 week
-MAX_EMBED_DIST=0.7
-ENABLE_PROMPT_CONFIG=true # whether to use prompt_config.json, false = use default chatgpt tone
+API_URL=
+API_KEY=
 
 BOT_TOKEN=
 BOT_CLIENT_ID=
 GUILD_ID=
-
-OPENAI_TOKEN=
 ```
 
-3. Copy `prompt_config.example.json` in `./src/config` and paste it in the same directory as `prompt_config.json` and fill in the desired base prompt (what tone should the bot respond to your messages) or keep it as is.
-4. Download dependencies by `bun i`
+3. Download dependencies by `bun i`
 
 ### Setting up your discord bot
 
