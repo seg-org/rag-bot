@@ -5,6 +5,8 @@ const configSchema = z.object({
   BOT_TOKEN: z.string(),
   BOT_CLIENT_ID: z.string(),
   GUILD_ID: z.string(),
+  API_URL: z.string(),
+  API_KEY: z.string(),
 });
 
 export const config = configSchema.parse(process.env);
