@@ -1,4 +1,5 @@
 import { AxiosResponse } from "axios";
+import { config } from "../config/config";
 import { logger } from "../logger/logger";
 import { apiClient } from "./axios";
 import { AddDTO, CompleteChatDTO } from "./dto";
@@ -9,6 +10,7 @@ export const completeChat = async (text: string) => {
       "/complete-chat",
       {
         params: { text: text },
+        headers: { Authorization: `Bearer ${config.API_KEY}` },
       }
     );
 
@@ -47,13 +49,13 @@ export const addWeb = async (url: string) => {
 
 export const recordMessage = async (text: string) => {
   try {
-    const res: AxiosResponse<AddDTO> = await apiClient.post("/documents/text", {
-      text: text,
-    });
-
-    return res.data;
+    // const res: AxiosResponse<AddDTO> = await apiClient.post("/documents/text", {
+    //   text: text,
+    // });
+    // return res.data;
+    return { reply: "Message recorded" };
   } catch (error) {
-    logger.error("Failed to add text", error);
-    return "Failed to add text";
+    logger.error("Failed to record message", error);
+    return "Failed to record message";
   }
 };
