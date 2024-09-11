@@ -1,5 +1,5 @@
 import { Events, Message } from "discord.js";
-import { addText } from "../api/api";
+import { recordMessage } from "../api/api";
 import { mentionHandler } from "../handlers/mention";
 import { logger } from "../logger/logger";
 
@@ -18,6 +18,6 @@ export const execute = async (message: Message) => {
   //   return;
   // }
 
-  logger.info(`Saving text from ${message.author.tag}`);
-  await addText(message.content);
+  logger.info(`Recording message from ${message.author.tag}`);
+  await recordMessage(message.content);
 };
