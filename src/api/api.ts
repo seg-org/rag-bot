@@ -1,5 +1,4 @@
 import { AxiosResponse } from "axios";
-import { config } from "../config/config";
 import { logger } from "../logger/logger";
 import { apiClient } from "./axios";
 import { AddDTO, CompleteChatDTO } from "./dto";
@@ -10,7 +9,6 @@ export const completeChat = async (text: string) => {
       "/complete-chat",
       {
         params: { text: text },
-        headers: { Authorization: `Bearer ${config.API_KEY}` },
       }
     );
 
