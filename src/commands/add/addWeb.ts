@@ -1,24 +1,27 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
-import { addText } from "../../api/api";
+import { addWeb } from "../../api/api";
 import { logger } from "../../logger/logger";
 
 export const data = new SlashCommandBuilder()
-  .setName("add-text")
-  .setDescription("add text to chatbot's knowledge base")
+  .setName("add-web")
+  .setDescription("add web's content to chatbot's knowledge base")
   .addStringOption((option) =>
-    option.setName("text").setDescription("The text to add").setRequired(true)
+    option
+      .setName("url")
+      .setDescription("The url of web content to add")
+      .setRequired(true)
   );
 
 export const execute = async (interaction: ChatInputCommandInteraction) => {
   logger.info(
-    `command: ${data.name}, text: ${interaction.options.getString("text")}`
+    `command: ${data.name}, url: ${interaction.options.getString("url")}`
   );
 
   if (!interaction.guild) return;
 
-  const text = interaction.options.getString("text") ?? "";
+  const url = interaction.options.getString("url") ?? "";
   await interaction.deferReply();
-  const reply = await addText(text);
+  const reply = await addWeb(url);
 
   await interaction.editReply(reply);
 };
