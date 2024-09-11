@@ -51,6 +51,6 @@ GUILD_ID=
 
 ### Running
 
-1. For the first time, run `bun deploy-commands` to deploy the commands to the discord server.
+1. For the first time or every time you add new commands, run `bun deploy-commands` to deploy the commands to the discord server.
 2. Run `docker-compose up -d` to start vector database.
 3. Run `bun dev` to start local bot.
