@@ -50,18 +50,3 @@ export const addWeb = async (url: string, guildID: string) => {
     return "Failed to add web";
   }
 };
-
-export const recordMessage = async (message: string, guildID: string) => {
-  try {
-    const res: AxiosResponse<AddDTO> = await apiClient.post(
-      `/guild/${guildID}/chat`,
-      {
-        message: message,
-      }
-    );
-    return res.data;
-  } catch (error) {
-    logger.error("Failed to record message", error);
-    return "Failed to record message";
-  }
-};
