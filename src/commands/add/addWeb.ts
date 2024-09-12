@@ -21,7 +21,7 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
 
   const url = interaction.options.getString("url") ?? "";
   await interaction.deferReply();
-  const reply = await addWeb(url);
+  const reply = await addWeb(url, interaction.guild.id);
 
   await interaction.editReply(reply);
 };

@@ -5,3 +5,7 @@ export type CompleteChatDTO = {
 export type AddDTO = {
   reply: string;
 };
+
+export type ToggleDTO = {
+  reply: string;
+};
