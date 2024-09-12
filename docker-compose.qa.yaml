@@ -12,7 +12,6 @@ services:
       - MAX_EMBED_DIST=1
       - BOT_TOKEN=${BOT_TOKEN}
       - BOT_CLIENT_ID=${BOT_CLIENT_ID}
-      - GUILD_ID=${GUILD_ID}
       - OPENAI_TOKEN=${OPENAI_TOKEN}
   db:
     image: pgvector/pgvector:pg16

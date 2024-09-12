@@ -32,7 +32,6 @@ API_KEY=
 
 BOT_TOKEN=
 BOT_CLIENT_ID=
-GUILD_ID=
 ```
 
 3. Download dependencies by `bun i`
