@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
 import { logger } from "../logger/logger";
 import { apiClient } from "./axios";
-import { AddDTO, CompleteChatDTO } from "./dto";
+import { AddDTO, CompleteChatDTO, ToggleDTO } from "./dto";
 
 export const completeChat = async (text: string, guildID: string) => {
   try {
@@ -48,5 +48,18 @@ export const addWeb = async (url: string, guildID: string) => {
   } catch (error) {
     logger.error("Failed to add web", error);
     return "Failed to add web";
+  }
+};
+
+export const toggleWebSearch = async (guildID: string) => {
+  try {
+    const res: AxiosResponse<ToggleDTO> = await apiClient.post(
+      `/guild/${guildID}/toggle-web-search`
+    );
+
+    return res.data.reply;
+  } catch (error) {
+    logger.error("Failed to toggle web search", error);
+    return "Failed to toggle web search";
   }
 };
