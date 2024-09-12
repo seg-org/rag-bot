@@ -3,10 +3,10 @@ import { logger } from "../logger/logger";
 import { apiClient } from "./axios";
 import { AddDTO, CompleteChatDTO } from "./dto";
 
-export const completeChat = async (text: string) => {
+export const completeChat = async (text: string, guildID: string) => {
   try {
     const res: AxiosResponse<CompleteChatDTO> = await apiClient.get(
-      "/complete-chat",
+      `/guild/${guildID}/complete-chat`,
       {
         params: { text: text },
       }
@@ -19,11 +19,14 @@ export const completeChat = async (text: string) => {
   }
 };
 
-export const addText = async (text: string) => {
+export const addText = async (text: string, guildID: string) => {
   try {
-    const res: AxiosResponse<AddDTO> = await apiClient.post("/documents/text", {
-      text: text,
-    });
+    const res: AxiosResponse<AddDTO> = await apiClient.post(
+      `/guild/${guildID}/documents/text`,
+      {
+        text: text,
+      }
+    );
 
     return res.data.reply;
   } catch (error) {
@@ -32,11 +35,14 @@ export const addText = async (text: string) => {
   }
 };
 
-export const addWeb = async (url: string) => {
+export const addWeb = async (url: string, guildID: string) => {
   try {
-    const res: AxiosResponse<AddDTO> = await apiClient.post("/documents/web", {
-      url: url,
-    });
+    const res: AxiosResponse<AddDTO> = await apiClient.post(
+      `/guild/${guildID}/documents/web`,
+      {
+        url: url,
+      }
+    );
 
     return res.data.reply;
   } catch (error) {
@@ -45,13 +51,15 @@ export const addWeb = async (url: string) => {
   }
 };
 
-export const recordMessage = async (text: string) => {
+export const recordMessage = async (message: string, guildID: string) => {
   try {
-    // const res: AxiosResponse<AddDTO> = await apiClient.post("/documents/text", {
-    //   text: text,
-    // });
-    // return res.data;
-    return { reply: "Message recorded" };
+    const res: AxiosResponse<AddDTO> = await apiClient.post(
+      `/guild/${guildID}/message`,
+      {
+        message: message,
+      }
+    );
+    return res.data;
   } catch (error) {
     logger.error("Failed to record message", error);
     return "Failed to record message";

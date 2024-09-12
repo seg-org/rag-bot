@@ -17,6 +17,6 @@ export const mentionHandler = async (message: Message) => {
   const content = rawContent.replace(regex, "").trim();
   logger.info(`mentionHandler actual content: ${content}`);
 
-  const reply = await completeChat(content);
+  const reply = await completeChat(content, message.guildId);
   await message.channel.send(reply);
 };

@@ -13,11 +13,6 @@ export const execute = async (message: Message) => {
     await mentionHandler(message);
   }
 
-  // if (!message.author.bot && Math.random() < 0.1) {
-  //   await samlamHandler(message);
-  //   return;
-  // }
-
   logger.info(`Recording message from ${message.author.tag}`);
-  await recordMessage(message.content);
+  await recordMessage(message.content, message.guildId);
 };
