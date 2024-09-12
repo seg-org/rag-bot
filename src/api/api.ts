@@ -54,7 +54,7 @@ export const addWeb = async (url: string, guildID: string) => {
 export const recordMessage = async (message: string, guildID: string) => {
   try {
     const res: AxiosResponse<AddDTO> = await apiClient.post(
-      `/guild/${guildID}/message`,
+      `/guild/${guildID}/chat`,
       {
         message: message,
       }
