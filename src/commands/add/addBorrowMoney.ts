@@ -17,7 +17,7 @@ export const data = new SlashCommandBuilder()
 
 export const execute = async (interaction: ChatInputCommandInteraction) => {
   logger.info(
-    `command: ${data.name}, text: ${interaction.options.getString("text")}`
+    `command: ${data.name} borrower: ${interaction.options.getString("borrower")}, lender: ${interaction.options.getString("lender")}, amount: ${interaction.options.getNumber("amount")}`
   );
 
   if (!interaction.guild) return;
