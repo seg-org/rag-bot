@@ -83,6 +83,24 @@ export const addBorrowMoney = async (borrower: string, lender: string, amount: n
   }
 };
 
+export const addSplitBill = async (payer: string, participants: string, amount: number, guildID: string) => {
+  try {
+    const res: AxiosResponse<AddDTO> = await apiClient.post(
+      `/guild/${guildID}/debt/add-split-bill`,
+      {
+        payer: payer,
+        participants: participants,
+        amount: amount,
+      }
+    );
+
+    return res.data.reply;
+  } catch (error) {
+    logger.error("Failed to add text", error);
+    return "Failed to add text";
+  }
+}
+
 export const askDebtSummary = async (person: string, guildID: string) => {
   try {
     const res: AxiosResponse<CompleteChatDTO> = await apiClient.post(
